@@ -54,8 +54,12 @@ public class ExpierenceWindow : EventObserver
 		gameObject.SetActive(false);
 	}
 
-	public override void OnNext()
+	public override void OnNext(bool value)
 	{
-		Play();
+		if (value)
+		{
+			Play();
+		}
+
 	}
 }

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ConeMaterial
+  m_Name: CylinderMaterialRedYellow
   m_Shader: {fileID: -6465566751694194690, guid: 4fd7e1061033af24d881c6fd1910b2c4,
     type: 3}
   m_Parent: {fileID: 0}
@@ -41,8 +41,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _FirstColor: {r: 1, g: 0, b: 0, a: 0}
-    - _SecondColor: {r: 1, g: 0, b: 0.026891708, a: 0}
+    - _FirstColor: {r: 2.297397, g: 1.2019317, b: 0, a: 0}
+    - _SecondColor: {r: 1, g: 0, b: 0.041268826, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &9026182568926950705
 MonoBehaviour:

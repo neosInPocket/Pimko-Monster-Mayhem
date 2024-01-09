@@ -6,6 +6,7 @@ using Vector2 = UnityEngine.Vector2;
 using Quaternion = UnityEngine.Quaternion;
 using System.Linq;
 using System;
+using System.Collections;
 
 public class RIng : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class RIng : MonoBehaviour
 	[SerializeField] private float yForce;
 	[SerializeField] private Vector3 tossAngularVelocity;
 	[SerializeField] private float yThresholdPosition;
+	[SerializeField] private GameObject effect;
+	[SerializeField] private AudioSource audioSource;
+	[SerializeField] private MeshRenderer meshRenderer;
+	[SerializeField] private RingMaterials ringMaterials;
+
 	public bool Enabled
 	{
 		get => isEnabled;
@@ -46,7 +52,32 @@ public class RIng : MonoBehaviour
 	{
 		EnhancedTouchSupport.Enable();
 		TouchSimulation.Enable();
+		SetScale();
 		ReturnToPosition();
+		audioSource.volume = PlayerPreferences.PlayerData.sfx;
+		meshRenderer.material = ringMaterials.Materials[PlayerPreferences.PlayerData.currentSkinIndex];
+	}
+
+	public void SetScale()
+	{
+		switch (PlayerPreferences.PlayerData.sizeUpgrade)
+		{
+			case 0:
+				transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+				break;
+
+			case 1:
+				transform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
+				break;
+
+			case 2:
+				transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+				break;
+
+			case 3:
+				transform.localScale = new Vector3(0.65f, 0.65f, 0.65f);
+				break;
+		}
 	}
 
 	private void Update()
@@ -107,7 +138,9 @@ public class RIng : MonoBehaviour
 				{
 					IsHit?.Invoke(true);
 					tossableGO.ChangePosition();
+					StartCoroutine(PlayEffect());
 					ReturnToPosition();
+
 					return;
 				}
 			}
@@ -115,6 +148,15 @@ public class RIng : MonoBehaviour
 
 		IsHit?.Invoke(false);
 		ReturnToPosition();
+	}
+
+	private IEnumerator PlayEffect()
+	{
+		effect.SetActive(true);
+		effect.transform.position = transform.position;
+
+		yield return new WaitForSeconds(1);
+		effect.SetActive(false);
 	}
 
 	private void OnCollisionEnter()

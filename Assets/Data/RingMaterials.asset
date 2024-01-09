@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: RingMaterials
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 8d784517dc53a6f48a9ae9297190962d, type: 2}
+  - {fileID: -876546973899608171, guid: 82764bbda410e1945bd6a8fe99e9e684, type: 3}
   - {fileID: 2100000, guid: bf7cacbb82e6b0e46b506872a4d474c8, type: 2}
-  - {fileID: 2100000, guid: 3be8ddfefd82d4c46aacf35c0e709d9d, type: 2}
-  - {fileID: 2100000, guid: daba5687afb2ea24f95d16146dce6cc8, type: 2}
-  - {fileID: 2100000, guid: 3be8ddfefd82d4c46aacf35c0e709d9d, type: 2}
-  - {fileID: 2100000, guid: 76869070091117547aec757fdd5a53d0, type: 2}
+  - {fileID: 2100000, guid: 301fdb340716c3a4cb37348a900c52e3, type: 2}
+  - {fileID: 2100000, guid: 83a31795828de824eae87a034afe7ec1, type: 2}
+  - {fileID: 2100000, guid: 0ebfd1dead983834ba1a7198a9eaa73a, type: 2}
+  - {fileID: 2100000, guid: 77b8f11cbe528ea4c9ff0cb5798fbaa8, type: 2}
   materialNames:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
+  - RAINBOW
+  - GHOST WHITE
+  - FROST WALK
+  - PURPLE LAVA
+  - POWER OF GREEN
+  - RING OF OMNIPOTENCE

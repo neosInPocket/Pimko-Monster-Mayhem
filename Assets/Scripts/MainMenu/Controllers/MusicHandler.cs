@@ -10,14 +10,19 @@ public class MusicHandler : MonoBehaviour
 		audioSource.volume = PlayerPreferences.PlayerData.volume;
 
 		var controller = GameObject.FindObjectsOfType<MusicHandler>();
-		var otherController = controller.FirstOrDefault(x => x != this);
+
+		if (controller.Length == 1)
+		{
+			DontDestroyOnLoad(gameObject);
+			return;
+		}
+
+		var otherController = controller.FirstOrDefault(x => x.gameObject.scene.name != "DontDestroyOnLoad");
 
 		if (otherController != null)
 		{
 			Destroy(otherController.gameObject);
 		}
-
-		DontDestroyOnLoad(gameObject);
 	}
 
 	public void ChangeMusicVolume(float volume)

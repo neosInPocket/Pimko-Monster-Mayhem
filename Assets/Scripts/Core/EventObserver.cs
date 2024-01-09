@@ -2,5 +2,5 @@ using UnityEngine;
 
 public abstract class EventObserver : MonoBehaviour
 {
-	public abstract void OnNext();
+	public abstract void OnNext(bool value);
 }

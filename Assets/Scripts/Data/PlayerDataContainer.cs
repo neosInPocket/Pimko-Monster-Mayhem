@@ -9,7 +9,7 @@ public class PlayerDataContainer
 	public bool firstTime = true;
 
 	public int level = 1;
-	public int levelPoints = 2;
+	public int levelPoints = 0;
 	public int currentExp = 0;
 	public int currentLevel = 1;
 	public int sizeUpgrade = 0;
@@ -18,6 +18,4 @@ public class PlayerDataContainer
 	public float sfx = 1f;
 	public bool[] skinsBought = { true, false, false, false, false, false };
 	public int currentSkinIndex = 0;
-
-
 }

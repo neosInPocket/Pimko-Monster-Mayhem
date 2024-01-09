@@ -5,6 +5,10 @@ public class Tossable : MonoBehaviour
 	[SerializeField] private float radius;
 	[SerializeField] private Vector2 zPositions;
 	[SerializeField] private float yPosition;
+	[SerializeField] private Material[] materials;
+	[SerializeField] private Material[] coneMaterials;
+	[SerializeField] private MeshRenderer meshRenderer;
+	[SerializeField] private MeshRenderer coneMeshRenderer;
 	public float Radius => radius;
 	private Vector2 screenSize;
 
@@ -20,5 +24,9 @@ public class Tossable : MonoBehaviour
 		var randomZ = Random.Range(zPositions.x, zPositions.y);
 
 		transform.position = new Vector3(randomX, yPosition, randomZ);
+
+		var randomIndex = Random.Range(0, coneMaterials.Length);
+		meshRenderer.material = materials[randomIndex];
+		coneMeshRenderer.material = coneMaterials[randomIndex];
 	}
 }

@@ -13,23 +13,27 @@ public class ExpierencePointsController : MonoBehaviour
 
 	private void CheckCurrentXP()
 	{
-		if (PlayerPreferences.PlayerData.currentExp >= MaxLevelExp)
+		if (PlayerPreferences.PlayerData.currentExp >= 100)
 		{
 			var leftExp = PlayerPreferences.PlayerData.currentExp - MaxLevelExp;
 
 			PlayerPreferences.PlayerData.currentExp = leftExp;
 			PlayerPreferences.PlayerData.level++;
 			PlayerPreferences.PlayerData.levelPoints++;
+			PlayerPreferences.PlayerData.force = PlayerPreferences.PlayerData.level * 100 + PlayerPreferences.PlayerData.currentExp;
 			PlayerPreferences.SaveData();
-			InvokeObservers();
+			InvokeObservers(true);
+			return;
 		}
+
+		InvokeObservers(false);
 	}
 
-	private void InvokeObservers()
+	private void InvokeObservers(bool value)
 	{
 		foreach (var observer in observers)
 		{
-			observer.OnNext();
+			observer.OnNext(value);
 		}
 	}
 }

@@ -41,37 +41,19 @@ public class PlayerPreferences : MonoBehaviour
 		}
 		else
 		{
-			using (FileStream fstream = File.OpenRead(saveFilePath))
-			{
-				byte[] buffer = new byte[fstream.Length];
-				fstream.Read(buffer, 0, buffer.Length);
-
-				string textFromFile = Encoding.Default.GetString(buffer);
-				PlayerData = JsonUtility.FromJson<PlayerDataContainer>(textFromFile);
-			}
+			string text = File.ReadAllText(saveFilePath);
+			PlayerData = JsonUtility.FromJson<PlayerDataContainer>(text);
 		}
 	}
 
 	private static void CreateNewSaveFile()
 	{
-		using (FileStream fs = File.Create(saveFilePath))
-		{
-			PlayerData = new PlayerDataContainer();
-			var textToWrite = JsonUtility.ToJson(PlayerData);
-			byte[] buffer = Encoding.Default.GetBytes(textToWrite);
-
-			fs.Write(buffer);
-		}
+		PlayerData = new PlayerDataContainer();
+		File.WriteAllText(saveFilePath, JsonUtility.ToJson(PlayerData, prettyPrint: true));
 	}
 
 	private static void WriteDataFile()
 	{
-		using (FileStream fs = File.OpenWrite(saveFilePath))
-		{
-			var textToWrite = JsonUtility.ToJson(PlayerData, prettyPrint: true);
-			byte[] buffer = Encoding.Default.GetBytes(textToWrite);
-
-			fs.Write(buffer);
-		}
+		File.WriteAllText(saveFilePath, JsonUtility.ToJson(PlayerData, prettyPrint: true));
 	}
 }

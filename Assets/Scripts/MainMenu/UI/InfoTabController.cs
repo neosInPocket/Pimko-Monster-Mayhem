@@ -22,7 +22,7 @@ public class InfoTabController : EventObserver
 		expFill.fillAmount = (float)PlayerPreferences.PlayerData.currentExp / 100f;
 	}
 
-	public override void OnNext()
+	public override void OnNext(bool value)
 	{
 		Refresh();
 	}
