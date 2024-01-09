@@ -1,4 +1,3 @@
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -6,6 +5,7 @@ using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 using Quaternion = UnityEngine.Quaternion;
 using System.Linq;
+using System;
 
 public class RIng : MonoBehaviour
 {
@@ -40,12 +40,12 @@ public class RIng : MonoBehaviour
 	private bool isEnabled;
 	private bool isCollided;
 	private Vector3 startTouchPosition;
+	public Action<bool> IsHit;
 
 	private void Start()
 	{
 		EnhancedTouchSupport.Enable();
 		TouchSimulation.Enable();
-		Enabled = true;
 		ReturnToPosition();
 	}
 
@@ -105,12 +105,15 @@ public class RIng : MonoBehaviour
 
 				if (circleEq < tossableGO.Radius && (transform.position.y < yThresholdPosition && transform.position.y > 0))
 				{
-					Debug.Log("Popped");
+					IsHit?.Invoke(true);
 					tossableGO.ChangePosition();
+					ReturnToPosition();
+					return;
 				}
 			}
 		}
 
+		IsHit?.Invoke(false);
 		ReturnToPosition();
 	}
 

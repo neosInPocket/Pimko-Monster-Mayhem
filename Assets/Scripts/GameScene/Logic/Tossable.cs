@@ -16,7 +16,7 @@ public class Tossable : MonoBehaviour
 
 	public void ChangePosition()
 	{
-		var randomX = Random.Range(-screenSize.x * 3 / 4, screenSize.y * 3 / 4);
+		var randomX = Random.Range(-screenSize.x * 3 / 4, screenSize.x * 3 / 4);
 		var randomZ = Random.Range(zPositions.x, zPositions.y);
 
 		transform.position = new Vector3(randomX, yPosition, randomZ);
