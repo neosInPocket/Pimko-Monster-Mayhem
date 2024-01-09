@@ -10,7 +10,7 @@ public class PlayerDataContainer
 
 	public int level = 1;
 	public int levelPoints = 0;
-	public int currentExp = 290;
+	public int currentExp = 0;
 	public int currentLevel = 1;
 	public int sizeUpgrade = 0;
 	public int timeUpgrade = 0;

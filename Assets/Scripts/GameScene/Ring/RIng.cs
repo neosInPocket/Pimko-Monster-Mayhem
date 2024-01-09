@@ -108,12 +108,13 @@ public class RIng : MonoBehaviour
 
 	private void OnTouch(Finger finger)
 	{
-		if (isShooted) return;
 		startTouchPosition = ScreenSizeInfo.ScreenToWorld(finger.screenPosition);
 	}
 
 	private void FingerUp(Finger finger)
 	{
+		if (isShooted) return;
+
 		var upFingerPosition = ScreenSizeInfo.ScreenToWorld(finger.screenPosition);
 		var result = upFingerPosition - startTouchPosition;
 		if (result.y < 0) return;
