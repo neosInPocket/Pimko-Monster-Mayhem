@@ -45,8 +45,10 @@ public class RIng : MonoBehaviour
 
 	private bool isEnabled;
 	private bool isCollided;
+	private bool isShooted;
 	private Vector3 startTouchPosition;
 	public Action<bool> IsHit;
+	private Vector2 screenSize;
 
 	private void Start()
 	{
@@ -56,6 +58,7 @@ public class RIng : MonoBehaviour
 		ReturnToPosition();
 		audioSource.volume = PlayerPreferences.PlayerData.sfx;
 		meshRenderer.material = ringMaterials.Materials[PlayerPreferences.PlayerData.currentSkinIndex];
+		screenSize = ScreenSizeInfo.ScreenSize;
 	}
 
 	public void SetScale()
@@ -82,6 +85,14 @@ public class RIng : MonoBehaviour
 
 	private void Update()
 	{
+		if (transform.position.x > 4 * screenSize.x / 3 || transform.position.x < -4 * screenSize.x / 3)
+		{
+			IsHit?.Invoke(false);
+			ReturnToPosition();
+			isCollided = false;
+			return;
+		}
+
 		if (!isCollided) return;
 
 		if (rb.velocity.magnitude > 0)
@@ -97,6 +108,7 @@ public class RIng : MonoBehaviour
 
 	private void OnTouch(Finger finger)
 	{
+		if (isShooted) return;
 		startTouchPosition = ScreenSizeInfo.ScreenToWorld(finger.screenPosition);
 	}
 
@@ -106,7 +118,7 @@ public class RIng : MonoBehaviour
 		var result = upFingerPosition - startTouchPosition;
 		if (result.y < 0) return;
 
-
+		isShooted = true;
 		AddRingForce(result);
 	}
 
@@ -169,7 +181,9 @@ public class RIng : MonoBehaviour
 	private void ReturnToPosition()
 	{
 		rb.useGravity = false;
+		isShooted = false;
 		rb.angularVelocity = Vector3.zero;
+		rb.velocity = Vector3.zero;
 		transform.position = spawnPosition;
 		transform.rotation = Quaternion.identity;
 	}

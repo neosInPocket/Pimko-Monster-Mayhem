@@ -234,6 +234,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &122504624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 122504626}
+  - component: {fileID: 122504625}
+  m_Layer: 0
+  m_Name: Preferences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &122504625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122504624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0388a9240218641468accdb8c3c8ba38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearPreferences: 0
+--- !u!4 &122504626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122504624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.852723, y: 0.82081985, z: 6.006112}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &187049683
 GameObject:
   m_ObjectHideFlags: 0
@@ -6821,14 +6866,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0, y: 1.69, z: -4.37}
   rb: {fileID: 355634398762993523}
-  forceMagnitude: 3
+  forceMagnitude: 2.3
   maxMagnitude: 20
   minMagnitude: 5
-  yForce: 1.3
+  yForce: 2
   tossAngularVelocity: {x: 0, y: 5, z: 0}
   yThresholdPosition: 0.25
   effect: {fileID: 6642501508327177754}
   audioSource: {fileID: 6704552275147067114}
+  meshRenderer: {fileID: 14793195611409147}
+  ringMaterials: {fileID: 11400000, guid: 870fc6564e235e948a9137273f4478ec, type: 2}
 --- !u!135 &6127116464419486714
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -44046,3 +44093,4 @@ SceneRoots:
   - {fileID: 725149156}
   - {fileID: 400586869}
   - {fileID: 505854766}
+  - {fileID: 122504626}
